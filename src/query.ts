@@ -29,8 +29,6 @@ export async function queryAI(q: string) {
         { role: "user", content: q },
     ];
 
-    console.log(JSON.stringify(messages, null, 2));
-
     const stream = await openai.chat.completions.create({
         model: 'gpt-3.5-turbo',
         stream: true,
