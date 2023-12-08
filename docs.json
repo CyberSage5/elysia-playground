@@ -1,0 +1,614 @@
+[
+  {
+    "pageContent": "Skip to content ElysiaJSSearchKMain NavigationQuick StartPluginsBlogGitHubDiscordAppearanceGitHubDiscordMenuReturn to top Sidebar Navigation Getting StartedIntroductionQuick StartConceptsRouteHandlerState & DecorateDerivePluginGroupLifecycleSchemaNumericGuardConfigExplicit BodyPatternsAfter",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 2,
+          "to": 2
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "HandleMethod ChainingFile UploadCookieCookie SignatureError HandlingWeb SocketReference ModelDependency InjectionRemappingLazy Loading ModuleCreating DocumentationTestingBody ParserTraceMountEnd-to-End Type SafetyPluginsEdenInstallationEden TreatyEden FnEden FetchPluginsBearerCORSCronGraphQL",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 2,
+          "to": 2
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "ApolloGraphQL YogaHTMLJWTServer TimingStaticStreamSwaggertrpcIntegrationDockerCheat SheetOn this page Table of Contents for current page Introduction ​ElysiaJS is a fast, and friendly Bun web framework.Pronounce as \"eh-LIHZ-iy-ah\"・ エリシア ・ เอลิเซียBuilding on top of 3 philosophies:Performance You",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 2,
+          "to": 2
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "You shall not worry about the underlying performanceSimplicity Simple building blocks to create an abstraction, not repeating yourselfFlexibility You shall be able to customize most of the library to fit your needDesigned with TypeScript in mind, you don't need to understand TypeScript to take",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 2,
+          "to": 2
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "to take advantage of Elysia. The library understands what you want and automatically infers the type from your code.Take a look at this:typescriptnew Elysia()",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 2,
+          "to": 2
+        }
+      }
+    }
+  },
+  {
+    "pageContent": ".get('/id/:id', (({ params: { id }}) => id))\n    .listen(8080)new Elysia()\n    .get('/id/:id', (({ params: { id }}) => id))",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 3,
+          "to": 5
+        }
+      }
+    }
+  },
+  {
+    "pageContent": ".listen(8080)Elysia understands that you want a path parameter name id. The library then registers id as a type in params.You can define a custom type for many things, for example, an incoming request's body.typescriptimport { Elysia, t } from 'elysia'",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 6,
+          "to": 6
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "new Elysia()\n    .post('/sign-in', ({ body }) => signIn(body), {\n        body: t.Object({\n            username: t.String(),\n            password: t.String()\n        })\n    })\n    .listen(8080)import { Elysia, t } from 'elysia'",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 8,
+          "to": 15
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "new Elysia()\n    .post('/sign-in', ({ body }) => signIn(body), {\n        body: t.Object({\n            username: t.String(),\n            password: t.String()\n        })\n    })",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 17,
+          "to": 23
+        }
+      }
+    }
+  },
+  {
+    "pageContent": ".listen(8080)You explicitly tell Elysia that the incoming request body is expected to have a structure as you define it.Elysia then infers the type from the code you write. Validate the body from the incoming request to ensure the type safety.Then with plugins, Elysia can instantly generate API",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 24,
+          "to": 24
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "API documentation with Swagger with a single line of code.typescriptimport { Elysia, t } from 'elysia'",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 24,
+          "to": 24
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "import { swagger } from '@elysiajs/swagger'",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 25,
+          "to": 25
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "new Elysia()\n    .use(swagger())\n    .post('/sign-in', ({ body }) => signIn(body), {\n        body: t.Object({\n            username: t.String(),\n            password: t.String()\n        })\n    })\n    .listen(8080)import { Elysia, t } from 'elysia'\nimport { swagger } from '@elysiajs/swagger'",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 27,
+          "to": 36
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "new Elysia()\n    .use(swagger())\n    .post('/sign-in', ({ body }) => signIn(body), {\n        body: t.Object({\n            username: t.String(),\n            password: t.String()\n        })\n    })",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 38,
+          "to": 45
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "})\n    .listen(8080)And finally, you can create a fully type-safe client for consuming Elysia API with Eden (optional).typescript// server.ts\nimport { Elysia, t } from 'elysia'\nimport { swagger } from '@elysiajs/swagger'",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 45,
+          "to": 48
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "const app = new Elysia()\n    .use(swagger())\n    .post('/sign-in', ({ body }) => signIn(body), {\n        body: t.Object({\n            username: t.String(),\n            password: t.String()\n        })\n    })\n    .listen(8080)",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 50,
+          "to": 58
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "export type App = typeof app// server.ts\nimport { Elysia, t } from 'elysia'\nimport { swagger } from '@elysiajs/swagger'",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 60,
+          "to": 62
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "const app = new Elysia()\n    .use(swagger())\n    .post('/sign-in', ({ body }) => signIn(body), {\n        body: t.Object({\n            username: t.String(),\n            password: t.String()\n        })\n    })\n    .listen(8080)",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 64,
+          "to": 72
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "export type App = typeof appAnd on the client:typescript// client.ts\nimport { edenTreaty } from '@elysiajs/eden'\nimport type { App } from './server'\n\nconst app = edenTreaty<App>('http://localhost:8080')",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 74,
+          "to": 78
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "app.signIn.post({\n    username: 'saltyaom',\n    password: 12345678\n}).then(console.log)// client.ts\nimport { edenTreaty } from '@elysiajs/eden'\nimport type { App } from './server'\n\nconst app = edenTreaty<App>('http://localhost:8080')",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 80,
+          "to": 87
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "app.signIn.post({\n    username: 'saltyaom',\n    password: 12345678",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 89,
+          "to": 91
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "}).then(console.log)Creating a single source of truth for your data structure, eliminating any possible type conflict between TypeScript, actual requests via validation, API documentation, and frontend client.Ensure that nothing went wrong in development, migration, and production. Edit this page",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 92,
+          "to": 92
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "this page on GitHubLast updated: Next pageQuick Start",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 92,
+          "to": 92
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "window.__VP_HASH_MAP__=JSON.parse(\"{\\\"blog_elysia-04.md\\\":\\\"12bbbb50\\\",\\\"blog_elysia-02.md\\\":\\\"6e1708ef\\\",\\\"concept_explicit-body.md\\\":\\\"90565564\\\",\\\"concept_group.md\\\":\\\"a8e9aeb4\\\",\\\"concept_guard.md\\\":\\\"ff533675\\\",\\\"concept_derive.md\\\":\\\"5b01f2ba\\\",\\\"concept_config.md\\\":\\\"a0abac4e\\\",\\\"concept_han",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "oncept_handler.md\\\":\\\"985fd66b\\\",\\\"concept_numeric.md\\\":\\\"213fcf3e\\\",\\\"blog_elysia-07.md\\\":\\\"44b6d285\\\",\\\"integrations_docker.md\\\":\\\"b8a62dd4\\\",\\\"integrations_cheat-sheet.md\\\":\\\"6b2fee30\\\",\\\"integrations_redirect.md\\\":\\\"078ddf2c\\\",\\\"integrations_static-file.md\\\":\\\"deb06866\\\",\\\"integrations_custom-40",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "_custom-404.md\\\":\\\"a1468a0a\\\",\\\"integrations_get-header.md\\\":\\\"71339d75\\\",\\\"blog_elysia-03.md\\\":\\\"b9ac8da2\\\",\\\"concept_life-cycle.md\\\":\\\"a286930b\\\",\\\"patterns_testing.md\\\":\\\"f9b848de\\\",\\\"introduction.md\\\":\\\"d595ac92\\\",\\\"patterns_method-chaining.md\\\":\\\"a7dda9de\\\",\\\"patterns_lazy-loading-module.md\\\":\\",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "ule.md\\\":\\\"6bbdaae4\\\",\\\"patterns_end-to-end-type-safety.md\\\":\\\"de73f486\\\",\\\"patterns_mount.md\\\":\\\"7d43a77a\\\",\\\"plugins_bearer.md\\\":\\\"89114d57\\\",\\\"patterns_error-handling.md\\\":\\\"5c24b43e\\\",\\\"patterns_reference-models.md\\\":\\\"80a185b7\\\",\\\"patterns_dependency-injection.md\\\":\\\"73586075\\\",\\\"patterns_file-",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "erns_file-upload.md\\\":\\\"9923d381\\\",\\\"patterns_remapping.md\\\":\\\"d486185b\\\",\\\"concept_plugin.md\\\":\\\"dd8a7fa6\\\",\\\"concept_route.md\\\":\\\"8f5d8c93\\\",\\\"patterns_body-parser.md\\\":\\\"c192416f\\\",\\\"patterns_after-handle.md\\\":\\\"31e7b325\\\",\\\"blog_elysia-06.md\\\":\\\"46a3c16a\\\",\\\"plugins_graphql-yoga.md\\\":\\\"1bcd4293\\",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "\"1bcd4293\\\",\\\"blog_integrate-trpc-with-elysia.md\\\":\\\"aa664eef\\\",\\\"patterns_trace.md\\\":\\\"1dccf192\\\",\\\"patterns_websocket.md\\\":\\\"1e10f82a\\\",\\\"plugins_eden_fetch.md\\\":\\\"6993023a\\\",\\\"plugins_eden_installation.md\\\":\\\"204de986\\\",\\\"plugins_eden_fn.md\\\":\\\"97fc169c\\\",\\\"plugins_html.md\\\":\\\"deb4c067\\\",\\\"plugin",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "\",\\\"plugins_eden_treaty.md\\\":\\\"e4de67f0\\\",\\\"concept_state-decorate.md\\\":\\\"c20ad8a6\\\",\\\"patterns_cookie-signature.md\\\":\\\"22eef214\\\",\\\"plugins_stream.md\\\":\\\"cd09d4df\\\",\\\"patterns_cookie.md\\\":\\\"9c0bd86f\\\",\\\"plugins_cron.md\\\":\\\"ecc8eabb\\\",\\\"plugins_overview.md\\\":\\\"30621499\\\",\\\"plugins_trpc.md\\\":\\\"63852d",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "\":\\\"63852dc1\\\",\\\"plugins_graphql-apollo.md\\\":\\\"b5cdef42\\\",\\\"plugins_cors.md\\\":\\\"6c746eac\\\",\\\"patterns_creating-documentation.md\\\":\\\"3358718d\\\",\\\"blog.md\\\":\\\"93767934\\\",\\\"concept_schema.md\\\":\\\"e71d8e24\\\",\\\"plugins_eden_overview.md\\\":\\\"26f838ef\\\",\\\"blog_elysia-05.md\\\":\\\"466e7a94\\\",\\\"plugins_static.md\\",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "static.md\\\":\\\"f0f2e86e\\\",\\\"plugins_swagger.md\\\":\\\"8fca0513\\\",\\\"blog_with-prisma.md\\\":\\\"5ad7c6ba\\\",\\\"quick-start.md\\\":\\\"cd7b5c2c\\\",\\\"plugins_server-timing.md\\\":\\\"e4660dc6\\\",\\\"plugins_jwt.md\\\":\\\"553a9915\\\",\\\"index-old.md\\\":\\\"685a113e\\\",\\\"index.md\\\":\\\"8b950d32\\\",\\\"blog_elysia-supabase.md\\\":\\\"451bc97b\\\"",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "451bc97b\\\"}\");window.__VP_SITE_DATA__=JSON.parse(\"{\\\"lang\\\":\\\"en-US\\\",\\\"dir\\\":\\\"ltr\\\",\\\"title\\\":\\\"ElysiaJS\\\",\\\"description\\\":\\\"A",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "VitePress site\\\",\\\"base\\\":\\\"/\\\",\\\"head\\\":[],\\\"appearance\\\":true,\\\"themeConfig\\\":{\\\"search\\\":{\\\"provider\\\":\\\"local\\\"},\\\"logo\\\":\\\"/assets/elysia.svg\\\",\\\"nav\\\":[{\\\"text\\\":\\\"Quick",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Start\\\",\\\"link\\\":\\\"/quick-start\\\"},{\\\"text\\\":\\\"Plugins\\\",\\\"link\\\":\\\"/plugins/overview\\\"},{\\\"text\\\":\\\"Blog\\\",\\\"link\\\":\\\"/blog\\\"}],\\\"sidebar\\\":[{\\\"text\\\":\\\"Getting Started\\\",\\\"items\\\":[{\\\"text\\\":\\\"Introduction\\\",\\\"link\\\":\\\"/introduction\\\"},{\\\"text\\\":\\\"Quick",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Start\\\",\\\"link\\\":\\\"/quick-start\\\"}]},{\\\"text\\\":\\\"Concepts\\\",\\\"items\\\":[{\\\"text\\\":\\\"Route\\\",\\\"link\\\":\\\"/concept/route\\\"},{\\\"text\\\":\\\"Handler\\\",\\\"link\\\":\\\"/concept/handler\\\"},{\\\"text\\\":\\\"State &",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Decorate\\\",\\\"link\\\":\\\"/concept/state-decorate\\\"},{\\\"text\\\":\\\"Derive\\\",\\\"link\\\":\\\"/concept/derive\\\"},{\\\"text\\\":\\\"Plugin\\\",\\\"link\\\":\\\"/concept/plugin\\\"},{\\\"text\\\":\\\"Group\\\",\\\"link\\\":\\\"/concept/group\\\"},{\\\"text\\\":\\\"Lifecycle\\\",\\\"link\\\":\\\"/concept/life-cycle\\\"},{\\\"text\\\":\\\"Schema\\\",\\\"link\\\":\\\"/concept/",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "\"/concept/schema\\\"},{\\\"text\\\":\\\"Numeric\\\",\\\"link\\\":\\\"/concept/numeric\\\"},{\\\"text\\\":\\\"Guard\\\",\\\"link\\\":\\\"/concept/guard\\\"},{\\\"text\\\":\\\"Config\\\",\\\"link\\\":\\\"/concept/config\\\"},{\\\"text\\\":\\\"Explicit",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Body\\\",\\\"link\\\":\\\"/concept/explicit-body\\\"}]},{\\\"text\\\":\\\"Patterns\\\",\\\"items\\\":[{\\\"text\\\":\\\"After Handle\\\",\\\"link\\\":\\\"/patterns/after-handle\\\"},{\\\"text\\\":\\\"Method Chaining\\\",\\\"link\\\":\\\"/patterns/method-chaining\\\"},{\\\"text\\\":\\\"File",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Upload\\\",\\\"link\\\":\\\"/patterns/file-upload\\\"},{\\\"text\\\":\\\"Cookie\\\",\\\"link\\\":\\\"/patterns/cookie\\\"},{\\\"text\\\":\\\"Cookie Signature\\\",\\\"link\\\":\\\"/patterns/cookie-signature\\\"},{\\\"text\\\":\\\"Error Handling\\\",\\\"link\\\":\\\"/patterns/error-handling\\\"},{\\\"text\\\":\\\"Web",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Socket\\\",\\\"link\\\":\\\"/patterns/websocket\\\"},{\\\"text\\\":\\\"Reference Model\\\",\\\"link\\\":\\\"/patterns/reference-models\\\"},{\\\"text\\\":\\\"Dependency Injection\\\",\\\"link\\\":\\\"/patterns/dependency-injection\\\"},{\\\"text\\\":\\\"Remapping\\\",\\\"link\\\":\\\"/patterns/remapping\\\"},{\\\"text\\\":\\\"Lazy Loading",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Loading Module\\\",\\\"link\\\":\\\"/patterns/lazy-loading-module\\\"},{\\\"text\\\":\\\"Creating Documentation\\\",\\\"link\\\":\\\"/patterns/creating-documentation\\\"},{\\\"text\\\":\\\"Testing\\\",\\\"link\\\":\\\"/patterns/testing\\\"},{\\\"text\\\":\\\"Body",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Parser\\\",\\\"link\\\":\\\"/patterns/body-parser\\\"},{\\\"text\\\":\\\"Trace\\\",\\\"link\\\":\\\"/patterns/trace\\\"},{\\\"text\\\":\\\"Mount\\\",\\\"link\\\":\\\"/patterns/mount\\\"},{\\\"text\\\":\\\"End-to-End Type",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Type Safety\\\",\\\"link\\\":\\\"/patterns/end-to-end-type-safety\\\"}]},{\\\"text\\\":\\\"Plugins\\\",\\\"items\\\":[{\\\"text\\\":\\\"Eden\\\",\\\"link\\\":\\\"/plugins/eden/overview\\\",\\\"items\\\":[{\\\"text\\\":\\\"Installation\\\",\\\"link\\\":\\\"/plugins/eden/installation.md\\\"},{\\\"text\\\":\\\"Eden",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Treaty\\\",\\\"link\\\":\\\"/plugins/eden/treaty.md\\\"},{\\\"text\\\":\\\"Eden Fn\\\",\\\"link\\\":\\\"/plugins/eden/fn.md\\\"},{\\\"text\\\":\\\"Eden",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Fetch\\\",\\\"link\\\":\\\"/plugins/eden/fetch.md\\\"}]},{\\\"text\\\":\\\"Plugins\\\",\\\"link\\\":\\\"/plugins/overview\\\",\\\"items\\\":[{\\\"text\\\":\\\"Bearer\\\",\\\"link\\\":\\\"/plugins/bearer\\\"},{\\\"text\\\":\\\"CORS\\\",\\\"link\\\":\\\"/plugins/cors\\\"},{\\\"text\\\":\\\"Cron\\\",\\\"link\\\":\\\"/plugins/cron\\\"},{\\\"text\\\":\\\"GraphQL",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Apollo\\\",\\\"link\\\":\\\"/plugins/graphql-apollo\\\"},{\\\"text\\\":\\\"GraphQL Yoga\\\",\\\"link\\\":\\\"/plugins/graphql-yoga\\\"},{\\\"text\\\":\\\"HTML\\\",\\\"link\\\":\\\"/plugins/html\\\"},{\\\"text\\\":\\\"JWT\\\",\\\"link\\\":\\\"/plugins/jwt\\\"},{\\\"text\\\":\\\"Server",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Timing\\\",\\\"link\\\":\\\"/plugins/server-timing\\\"},{\\\"text\\\":\\\"Static\\\",\\\"link\\\":\\\"/plugins/static\\\"},{\\\"text\\\":\\\"Stream\\\",\\\"link\\\":\\\"/plugins/stream\\\"},{\\\"text\\\":\\\"Swagger\\\",\\\"link\\\":\\\"/plugins/swagger\\\"},{\\\"text\\\":\\\"trpc\\\",\\\"link\\\":\\\"/plugins/trpc\\\"}]}]},{\\\"text\\\":\\\"Integration\\\",\\\"items\\\":[{\\\"text\\\":",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "{\\\"text\\\":\\\"Docker\\\",\\\"link\\\":\\\"/integrations/docker\\\"},{\\\"text\\\":\\\"Cheat",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "Sheet\\\",\\\"link\\\":\\\"/integrations/cheat-sheet\\\"}]}],\\\"socialLinks\\\":[{\\\"icon\\\":\\\"github\\\",\\\"link\\\":\\\"https://github.com/elysiajs/elysia\\\"},{\\\"icon\\\":\\\"discord\\\",\\\"link\\\":\\\"https://discord.gg/eaFJ2KDJck\\\"}],\\\"editLink\\\":{\\\"text\\\":\\\"Edit this page on",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  },
+  {
+    "pageContent": "page on GitHub\\\",\\\"pattern\\\":\\\"https://github.com/elysiajs/documentation/edit/main/docs/:path\\\"}},\\\"locales\\\":{},\\\"scrollOffset\\\":90,\\\"cleanUrls\\\":false}\");",
+    "metadata": {
+      "source": "https://elysiajs.com/introduction.html",
+      "loc": {
+        "lines": {
+          "from": 93,
+          "to": 93
+        }
+      }
+    }
+  }
+]
