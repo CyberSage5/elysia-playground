@@ -1,11 +1,7 @@
 import OpenAI from "openai";
-import { getQdrantClient } from "./langhain-demo";
-import { Message, OpenAIStream, StreamingTextResponse } from "ai";
-import { getRelevantDocs } from "./utils";
 import { ChatCompletionMessageParam } from "openai/resources";
+import { getRelevantDocs } from "./utils";
 
-
-const client = getQdrantClient()
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -14,7 +10,6 @@ const openai = new OpenAI({
 export async function queryAI(q: string) {
     let start = new Date()
     let result = ""
-    let firstChunkReceived = false;
     const timestamps = []
 
     const context = await getRelevantDocs(q)
@@ -39,7 +34,6 @@ export async function queryAI(q: string) {
         const stop = new Date();
         const elapsedSeconds = (stop.getTime() - start.getTime()) / 1000;
         timestamps.push('Time to receive ' + elapsedSeconds.toFixed(2) + ' seconds');
-        firstChunkReceived = true;
 
         const { content } = chunk.choices[0].delta
 
