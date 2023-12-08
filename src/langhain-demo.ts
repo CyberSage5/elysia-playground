@@ -1,10 +1,21 @@
 import { ChatOpenAI } from "langchain/chat_models/openai";
 import { ChatPromptTemplate } from "langchain/prompts";
 import { BaseOutputParser } from "langchain/schema/output_parser";
+import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { QdrantClient } from "@qdrant/js-client-rest";
 
-/**
- * Parse the output of an LLM call to a comma-separated list.
- */
+export const embeddingModel = new OpenAIEmbeddings()
+
+
+const collectionName = 'documents';
+
+export const getQdrantClient = () => {
+
+	return new QdrantClient({
+		url: process.env.QDRANT_URL,
+		apiKey: process.env.QDRANT_API_KEY,
+	});
+};
 
 // @ts-ignore
 class CommaSeparatedListOutputParser extends BaseOutputParser<string[]> {
@@ -33,10 +44,10 @@ const parser = new CommaSeparatedListOutputParser();
 
 const chain = chatPrompt.pipe(model).pipe(parser);
 
-export async function getAIResponse() {
+export async function getAIResponse(text: string) {
     const result = await chain.invoke({
-        text: "colors",
+        text
     });
     
-    return {result};
+    return result
 }

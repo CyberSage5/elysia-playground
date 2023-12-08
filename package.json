@@ -7,8 +7,11 @@
     "start": "bun run src/index.ts"
   },
   "dependencies": {
+    "@qdrant/js-client-rest": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
     "elysia": "latest",
-    "langchain": "^0.0.203"
+    "langchain": "^0.0.203",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
     "bun-types": "latest"
