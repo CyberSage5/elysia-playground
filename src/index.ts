@@ -1,4 +1,4 @@
-import { Elysia } from "elysia";
+import { Elysia, t } from "elysia";
 import { getAIResponse } from "./langhain-demo";
 import { ingest } from "./ingest";
 import { getHtmlContent } from "./utils";
@@ -47,6 +47,12 @@ app.get("/query", ({ query: { q } }) => {
 
   return queryAI(q)
 
+})
+
+app.post('/upload', ({ body: { file } }) => file, {
+  body: t.Object({
+    file: t.File()
+  })
 })
 
 
