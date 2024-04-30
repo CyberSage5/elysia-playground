@@ -5,57 +5,56 @@ import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { QdrantClient } from "@qdrant/js-client-rest";
 import { StringOutputParser } from "langchain/schema/output_parser";
 
-export const embeddingModel = new OpenAIEmbeddings()
-
-
+export const embeddingModel = new OpenAIEmbeddings();
 
 const collectionName = 'documents';
 
 export const getQdrantClient = () => {
-
+  const { QDRANT_URL, QDRANT_API_KEY } = process.env;
   return new QdrantClient({
-    url: process.env.QDRANT_URL,
-    apiKey: process.env.QDRANT_API_KEY,
+    url: QDRANT_URL,
+    apiKey: QDRANT_API_KEY,
   });
 };
 
-
-const template = `You are a helpful assistant who generates comma separated lists.
+const SYSTEM_TEMPLATE = `You are a helpful assistant who generates comma separated lists.
 A user will pass in a category, and you should generate 5 objects in that category in a comma separated list.
 ONLY return a comma separated list, and nothing more.`;
 
-const humanTemplate = "{text}";
+const HUMAN_TEMPLATE = "{text}";
 
 const chatPrompt = ChatPromptTemplate.fromMessages([
-  ["system", template],
-  ["human", humanTemplate],
+  ["system", SYSTEM_TEMPLATE],
+  ["human", HUMAN_TEMPLATE],
 ]);
 
 const model = new ChatOpenAI({
-  streaming: true
+  streaming: true,
 });
 const parser = new StringOutputParser();
 
 const chain = chatPrompt.pipe(model).pipe(parser);
 
 export async function getAIResponse(text: string) {
-  let start = new Date()
-  let result = ""
+  if (!text) return ""; // Early return if no text provided
+
+  let startTime = new Date();
+  let result = "";
 
   const stream = await chain.invoke({
-    text
+    text,
   });
 
   let firstChunkReceived = false;
 
   for await (const chunk of stream) {
     if (!firstChunkReceived) {
-      const stop = new Date();
-      console.log('Time to receive first chunk:', stop.getTime() - start.getTime(), 'ms');
+      const endTime = new Date();
+      console.log('Time to receive first chunk:', endTime.getTime() - startTime.getTime(), 'ms');
       firstChunkReceived = true;
     }
-    result += chunk
+    result += chunk;
   }
 
-  return result
+  return result;
 }
